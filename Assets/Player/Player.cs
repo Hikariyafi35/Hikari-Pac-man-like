@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -5,10 +6,41 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Action onPowerUpStart;
+    public Action onPowerUpStop;
+
+
     private Rigidbody _rigidbody;
     [SerializeField]
     private Camera _camera;
-    [SerializeField] private float _speed;
+    [SerializeField] 
+    private float _speed;
+    [SerializeField]
+    private float _powerUpDuration;
+    
+    private Coroutine _powerUpCoroutine;
+
+    public void PickPowerUp()
+    {
+        if(_powerUpCoroutine != null)
+        {
+            StopCoroutine(_powerUpCoroutine);
+        }
+        _powerUpCoroutine = StartCoroutine(StartPowerUp());
+    }
+
+    private IEnumerator StartPowerUp()
+    {
+        if(onPowerUpStart != null)
+        {
+            onPowerUpStart();
+        }
+        yield return new WaitForSeconds(_powerUpDuration);
+        if(onPowerUpStop != null)
+        {
+            onPowerUpStop();
+        }
+    }
 
     private void Awake() {
         _rigidbody = GetComponent<Rigidbody>();
