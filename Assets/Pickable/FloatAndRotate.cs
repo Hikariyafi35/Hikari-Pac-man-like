@@ -16,11 +16,11 @@ public class FloatAndRotate : MonoBehaviour
 
     void Update()
     {
-        // Gerakan melayang atas-bawah menggunakan sin wave
+        
         float newY = startPos.y + Mathf.Sin(Time.time * floatSpeed) * floatHeight;
         transform.position = new Vector3(startPos.x, newY, startPos.z);
 
-        // Rotasi seperti koin (pada sumbu Z agar tampak berputar)
+        
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
     }
 }
