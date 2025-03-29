@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Base/Scenes/LoseScreen.unity
     guid: bbaf1b75bab1e96479b9b072f6de9b63
+  - enabled: 1
+    path: Assets/WarehouseLevel/Scene/BlockoutWarehouse.unity
+    guid: d7dd2353d128f2e4ca8735036f294cea
   m_configObjects: {}

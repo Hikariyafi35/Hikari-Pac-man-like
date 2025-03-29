@@ -12,7 +12,7 @@ public class GameOverManager : MonoBehaviour
     }
     public void Retry()
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene("BlockoutWarehouse");
     }
     public void MainMenu()
     {

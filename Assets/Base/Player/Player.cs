@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     public void Dead()
     {
         _health -= 1;
-        if( _health >= 0 )
+        if( _health > 0 )
         {
             transform.position = _respawnPoint.position;
         }

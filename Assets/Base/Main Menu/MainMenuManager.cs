@@ -7,7 +7,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene("BlockoutWarehouse");
     }
     public void Exit()
     {

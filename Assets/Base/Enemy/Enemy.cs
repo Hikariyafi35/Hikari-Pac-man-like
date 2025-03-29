@@ -45,13 +45,14 @@ public class Enemy : MonoBehaviour
             player.onPowerUpStart += startRetreating;
             player.onPowerUpStop += stopRetreating;
         }
+
     }
     private void Update() {
         if (_currentState != null)
         {
             _currentState.UpdateState(this);
         }
-        
+        animator.SetFloat("velocity", navMeshAgent.velocity.magnitude);
     }
     private void startRetreating()
     {
