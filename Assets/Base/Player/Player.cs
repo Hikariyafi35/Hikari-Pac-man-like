@@ -28,6 +28,14 @@ public class Player : MonoBehaviour
     private float _rotationTime  = 0.1f;
     [SerializeField]
     private Animator _animator;
+    [SerializeField]
+    private string _loseSceneName;
+    [SerializeField]
+    private AudioSource _powerupOnSFX;
+    [SerializeField]
+    private AudioSource _powerupOffSFX;
+    [SerializeField]
+    private AudioSource _deadFX;
     
     private Coroutine _powerUpCoroutine;
     private bool _isPowerUpActive = false;
@@ -43,7 +51,8 @@ public class Player : MonoBehaviour
         else
         {
             _health = 0;
-            SceneManager.LoadScene("LoseScreen");
+            _deadFX.Play();
+            SceneManager.LoadScene(_loseSceneName);
         }
         UpdateUI();
     }
@@ -59,12 +68,14 @@ public class Player : MonoBehaviour
     private IEnumerator StartPowerUp()
     {
         _isPowerUpActive = true;
+        _powerupOnSFX.Play();
         if(onPowerUpStart != null)
         {
             onPowerUpStart();
         }
         yield return new WaitForSeconds(_powerUpDuration);
         _isPowerUpActive = false;
+        _powerupOffSFX.Play();
         if(onPowerUpStop != null)
         {
             onPowerUpStop();
@@ -118,6 +129,6 @@ public class Player : MonoBehaviour
 
     private void UpdateUI()
     {
-        _healthText.text = "Health : " + _health;
+        _healthText.text =   _health.ToString();
     }
 }

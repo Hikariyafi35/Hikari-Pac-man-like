@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public Animator animator;
     public Enemy enemy;
+    [SerializeField]
+    public AudioSource _foundSFX;
 
     public void SwitchState(BaseState state)
     {

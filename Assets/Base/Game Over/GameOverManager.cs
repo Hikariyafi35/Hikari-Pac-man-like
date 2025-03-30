@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
+    [SerializeField]
+    private string _gameplaySceneName;
+    [SerializeField]
+    private string _mainmenuSceneName;
     private void Start() 
     {
         Cursor.lockState = CursorLockMode.None;
@@ -12,10 +16,10 @@ public class GameOverManager : MonoBehaviour
     }
     public void Retry()
     {
-        SceneManager.LoadScene("BlockoutWarehouse");
+        SceneManager.LoadScene(_gameplaySceneName);
     }
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(_mainmenuSceneName);
     }
 }

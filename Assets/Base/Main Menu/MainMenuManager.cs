@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField]
+    private string _gameplaySceneName;
     public void Play()
     {
-        SceneManager.LoadScene("BlockoutWarehouse");
+        SceneManager.LoadScene(_gameplaySceneName);
     }
     public void Exit()
     {
